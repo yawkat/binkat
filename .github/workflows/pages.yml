@@ -15,6 +15,8 @@ jobs:
     permissions:
       contents: read
       pull-requests: write
+    env:
+      OPENSCAD_SNAPSHOT_VERSION: 2026.01.19
     steps:
       - name: Checkout
         uses: actions/checkout@v6
@@ -31,8 +33,39 @@ jobs:
 
       - name: Generate params
         run: |
+          set -euo pipefail
+
           sudo apt-get update
-          sudo apt-get install -y just openscad
+          sudo apt-get install -y just xvfb libegl1 libgl1 libopengl0 curl
+
+          # Ubuntu's OpenSCAD is too old; use a nightly snapshot AppImage.
+          version="$OPENSCAD_SNAPSHOT_VERSION"
+          base='https://files.openscad.org/snapshots'
+          appimage="OpenSCAD-${version}-x86_64.AppImage"
+          cache_dir="$GITHUB_WORKSPACE/.openscad-cache"
+
+          mkdir -p "$cache_dir"
+          cd "$cache_dir"
+          if [ ! -f "$appimage" ]; then
+            curl -fsSLo "$appimage" "$base/$appimage"
+          fi
+          chmod +x "$appimage"
+          if [ ! -d squashfs-root ]; then
+            "./$appimage" --appimage-extract >/dev/null
+          fi
+
+          cat > openscad <<'EOF'
+          #!/usr/bin/env bash
+          set -euo pipefail
+          DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+          exec xvfb-run -a "$DIR/squashfs-root/AppRun" "$@"
+          EOF
+          chmod +x openscad
+
+          echo "$cache_dir" >> "$GITHUB_PATH"
+          export PATH="$cache_dir:$PATH"
+          cd "$GITHUB_WORKSPACE"
+
           just params
 
       - name: Generate site
