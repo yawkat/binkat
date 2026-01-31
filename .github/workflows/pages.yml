@@ -65,7 +65,8 @@ jobs:
         with:
           scad-json: |
             [
-              {"file": "coin-cells.scad", "additional-params": ["build/configurable-bin-params.json"]}
+              {"file": "coin-cells.scad", "additional-params": ["build/configurable-bin-params.json"]},
+              {"file": "cylindrical-cells.scad", "additional-params": ["build/configurable-bin-params.json"]}
             ]
           mode: multi
           output: out
