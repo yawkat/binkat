@@ -8,7 +8,7 @@ cell_diameter = 16;
 // Height of each cell
 cell_height = 85;
 // Target gap between cells
-cell_gap = 0.1;
+cell_gap = 1;
 // How much of the cell should stick out of the bin to grab onto? 0.35 means 35% should stick out
 cell_grab_length = 0.35;
 // How far should the cell be recessed into the box? Setting this to the same or a higher value as cell_grab_length makes the bin stackable.
@@ -20,6 +20,7 @@ margin = STACKING_LIP_SIZE[0] + 0.5;
 
 bin_render(bin1) {
     infill = bin_get_infill_size_mm(bin1);
+    assert(infill.z >= (1-cell_grab_length+recess)*cell_height, "Not enough vertical height! Increase gridz, increase the cell_grab_length, or reduce the recess");
     translate([-infill[0]/2, -infill[1]/2, -recess*cell_height]) cube([infill[0], infill[1], recess*cell_height]);
     usable = bin_get_bounding_box(bin1) - [margin * 2, margin * 2];
     dia_adj = stagger?sqrt(3)/2:1;

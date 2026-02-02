@@ -18,12 +18,13 @@ cell_grab_length = 0.35; // [0:1]
 // How far should the cell be recessed into the box? Setting this to the same or a higher value as cell_grab_length makes the bin stackable.
 recess = 0.35;
 // Minimum space for the label that is kept clear of cells
-min_label_height = 10;
+min_label_height = 8;
 
 margin = STACKING_LIP_SIZE[0]+0.5;
 
 bin_render(bin1) {
     infill = bin_get_infill_size_mm(bin1);
+    assert(infill.z >= (1-cell_grab_length+recess)*cell_diameter, "Not enough vertical height! Increase gridz, increase the cell_grab_length, or reduce the recess");
     recess_abs = recess * cell_diameter;
     translate([-infill[0]/2, -infill[1]/2, -recess_abs])cube([infill[0], infill[1], recess_abs]);
     usable = bin_get_bounding_box(bin1) - [margin * 2, margin * 2 + min_label_height];
