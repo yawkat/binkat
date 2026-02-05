@@ -66,7 +66,8 @@ jobs:
           scad-json: |
             [
               {"file": "coin-cells.scad", "additional-params": ["build/configurable-bin-params.json"]},
-              {"file": "cylindrical-cells.scad", "additional-params": ["build/configurable-bin-params.json"]}
+              {"file": "cylindrical-cells.scad", "additional-params": ["build/configurable-bin-params.json"]},
+              {"file": "kraftform-micro.scad", "additional-params": ["build/configurable-bin-params.json"]}
             ]
           mode: multi
           output: out
@@ -77,10 +78,7 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          command: >-
-            pages deploy out/
-            --project-name=binkat-yawk-at
-            --branch=main
+          command: pages deploy out/ --project-name=binkat-yawk-at
       - name: Check PR
         uses: 8BitJonny/gh-get-current-pr@4.0.0
         id: pr

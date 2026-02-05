@@ -6,6 +6,10 @@ model file gridx gridy gridz name stackable args:
 	mkdir -p build/printables/{{file}}
 	openscad -o "build/printables/{{file}}/{{name}} ({{gridx}}x{{gridy}}{{ if stackable == 'true' { ', stackable' } else { '' } }}, height {{gridz}}).stl" --export-format=binstl -D gridx={{gridx}} -D gridy={{gridy}} -D gridz={{gridz}} -D "recess={{stackable}}?0.35:0" {{args}} {{file}}.scad
 
+simple-model file args:
+	mkdir -p build/printables/{{file}}
+	openscad -o "build/printables/{{file}}/{{file}}.stl" --export-format=binstl {{args}} {{file}}.scad
+
 clean-models file:
 	rm -rf build/printables/{{file}}
 
@@ -46,6 +50,7 @@ models: (clean-models "coin-cells") (clean-models "cylindrical-cells") \
 	(model "cylindrical-cells" "2" "2" "9" "AAA" "true" "-D stagger=true -D cell_diameter=11 -D cell_height=1+44.5") \
 	(model "cylindrical-cells" "2" "2" "8" "18650" "false" "-D cell_gap=0.4 -D cell_diameter=19 -D cell_height=1+70") \
 	(model "cylindrical-cells" "1" "1" "6" "10440" "false" "-D cell_diameter=11 -D cell_height=1+48") \
+	(simple-model "kraftform-micro" "") \
 	(printables-zip "coin-cells") \
 	(printables-zip "cylindrical-cells")
 
