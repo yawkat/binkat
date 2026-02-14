@@ -52,5 +52,6 @@ models: (clean-models "coin-cells") (clean-models "cylindrical-cells") \
 	(model "cylindrical-cells" "1" "1" "6" "10440" "false" "-D cell_diameter=11 -D cell_height=1+48") \
 	(simple-model "kraftform-micro" "") \
 	(printables-zip "coin-cells") \
-	(printables-zip "cylindrical-cells")
+	(printables-zip "cylindrical-cells") \
+	(printables-zip "kraftform-micro")
 
