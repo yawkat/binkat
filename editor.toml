@@ -1,0 +1,17 @@
+[project]
+name = "binkat"
+uri = "https://github.com/yawkat/binkat"
+export-filename-prefix = "binkat"
+mode = "multi"
+
+[[model]]
+file = "coin-cells.scad"
+additional-params = ["build/configurable-bin-params.json"]
+
+[[model]]
+file = "cylindrical-cells.scad"
+additional-params = ["build/configurable-bin-params.json"]
+
+[[model]]
+file = "kraftform-micro.scad"
+additional-params = ["build/configurable-bin-params.json"]
