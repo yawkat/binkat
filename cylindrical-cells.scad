@@ -1,4 +1,5 @@
 include <configurable-bin.scad>
+gridz = 10;
 
 $fa = 4;
 $fs = 0.25; // .01
