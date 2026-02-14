@@ -63,13 +63,7 @@ jobs:
       - name: Generate site
         uses: yawkat/web-openscad-editor@main
         with:
-          scad-json: |
-            [
-              {"file": "coin-cells.scad", "additional-params": ["build/configurable-bin-params.json"]},
-              {"file": "cylindrical-cells.scad", "additional-params": ["build/configurable-bin-params.json"]},
-              {"file": "kraftform-micro.scad", "additional-params": ["build/configurable-bin-params.json"]}
-            ]
-          mode: multi
+          config: editor.toml
           output: out
 
       - name: Publish
