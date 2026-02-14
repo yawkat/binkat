@@ -3,15 +3,22 @@ name = "binkat"
 uri = "https://github.com/yawkat/binkat"
 export-filename-prefix = "binkat"
 mode = "multi"
+head-extra = '<script defer src="https://umami.yawk.at/script.js" data-website-id="45622643-0a2e-4fed-8271-60290e8f9dbb"></script>'
 
 [[model]]
 file = "coin-cells.scad"
 additional-params = ["build/configurable-bin-params.json"]
+umami-track-render = []
+umami-track-export = []
 
 [[model]]
 file = "cylindrical-cells.scad"
 additional-params = ["build/configurable-bin-params.json"]
+umami-track-render = []
+umami-track-export = []
 
 [[model]]
 file = "kraftform-micro.scad"
 additional-params = ["build/configurable-bin-params.json"]
+umami-track-render = []
+umami-track-export = []
