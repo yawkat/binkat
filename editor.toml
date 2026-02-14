@@ -3,7 +3,7 @@ name = "binkat"
 uri = "https://github.com/yawkat/binkat"
 export-filename-prefix = "binkat"
 mode = "multi"
-head-extra = '<script defer src="https://umami.yawk.at/script.js" data-website-id="45622643-0a2e-4fed-8271-60290e8f9dbb"></script>'
+head-extra = '<script defer src="https://um.yawk.at/script.js" data-website-id="45622643-0a2e-4fed-8271-60290e8f9dbb"></script>'
 
 [[model]]
 file = "coin-cells.scad"
