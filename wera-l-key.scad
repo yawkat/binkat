@@ -92,7 +92,7 @@ module wrench(d, length_main, length_short) {
 
 //wrench(d = 10, length_main = 100, length_short = 50);
 
-bin_render(bin1) mirror([1, 0]) {
+bin_render(bin1) mirror([0, 1]) {
     infill = bin_get_infill_size_mm(bin1);
     inset = stackable ? wrench_dimensions[0][_D]*0.6 : 0;
     echo(infill=infill);
