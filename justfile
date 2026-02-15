@@ -51,7 +51,9 @@ models: (clean-models "coin-cells") (clean-models "cylindrical-cells") \
 	(model "cylindrical-cells" "2" "2" "8" "18650" "false" "-D cell_gap=0.4 -D cell_diameter=19 -D cell_height=1+70") \
 	(model "cylindrical-cells" "1" "1" "6" "10440" "false" "-D cell_diameter=11 -D cell_height=1+48") \
 	(simple-model "kraftform-micro" "") \
+	(simple-model "wera-l-key" "") \
 	(printables-zip "coin-cells") \
 	(printables-zip "cylindrical-cells") \
-	(printables-zip "kraftform-micro")
+	(printables-zip "kraftform-micro") \
+	(printables-zip "wera-l-key")
 

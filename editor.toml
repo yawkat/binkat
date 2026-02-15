@@ -22,3 +22,9 @@ file = "kraftform-micro.scad"
 additional-params = ["build/configurable-bin-params.json"]
 umami-track-render = []
 umami-track-export = []
+
+[[model]]
+file = "wera-l-key.scad"
+additional-params = ["build/configurable-bin-params.json"]
+umami-track-render = []
+umami-track-export = []
